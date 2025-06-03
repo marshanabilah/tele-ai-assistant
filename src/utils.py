@@ -1,7 +1,8 @@
 import os, requests
 from datetime import datetime
 
-SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+SCOPES = ["https://www.googleapis.com/auth/gmail.readonly",
+          "https://www.googleapis.com/auth/calendar.events"]
 
 def send_telegram_message(message):
     """
@@ -31,7 +32,7 @@ def send_telegram_message(message):
     return "Message sent successfully."
 
 def receive_telegram_message(after_timestamp):
-    
+
     TOKEN = os.getenv("BOT_TOKEN")
     url = f"https://api.telegram.org/bot{TOKEN}/getUpdates"
     response = requests.get(url).json()
